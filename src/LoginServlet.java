@@ -17,14 +17,21 @@ public class LoginServlet extends HttpServlet {
 
 		String userN = request.getParameter("userName");
 		String passW = request.getParameter("pass");
+		 String url="";
+		 
+		MyDBC myDBC = new MyDBC();
 		
-		HttpSession session = request.getSession();
-		session.setAttribute("userna", userN);
-		//session.setMaxInactiveInterval(40);
+		if(myDBC.chickLogin(userN, passW)) {
+			HttpSession session = request.getSession();
+			session.setAttribute("userna", userN);	
+			url="/WelcomPage.jsp";
+		}
 		
-	    String url="";
-	    String msg="";
-	     url="/WelcomPage.jsp";
+		else
+			url="/LoginPage.jsp";
+		
+	
+	     
 	    
 	    RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
 	    rd.forward(request, response);
