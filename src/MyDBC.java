@@ -23,9 +23,13 @@ public boolean chickLogin(String username , String password) {
 			ResultSet rs =st.executeQuery();
 			
 			if(rs.next()) {
+				try {
+					s = rs.getString(4);
+					System.out.println(s);
+				}catch(Exception e){
+					
+				}
 				
-				s = rs.getString(4);
-				System.out.println(s);
 							
 				return true;
 				
@@ -49,10 +53,13 @@ public boolean chickLogin(String username , String password) {
 
 
 public boolean isAdmin(String s) {
+	try {
 	if(s.equals("y"))
 		return true;
 	
-	else
+	}catch(Exception e) {
+		
+	}
 		return false;
 }	
 }
