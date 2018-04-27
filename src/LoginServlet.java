@@ -26,10 +26,10 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("userna", userN);	
 			
-			/*if(myDBC.isAdmin)
+			if(myDBC.isAdmin(myDBC.s))
 				url="/WelcomAdmin.jsp";
 			
-			else*/
+			else
 				url="/WelcomPage.jsp";
 		}
 		
