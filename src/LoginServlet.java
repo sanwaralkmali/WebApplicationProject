@@ -22,9 +22,15 @@ public class LoginServlet extends HttpServlet {
 		MyDBC myDBC = new MyDBC();
 		
 		if(myDBC.chickLogin(userN, passW)) {
+			
 			HttpSession session = request.getSession();
 			session.setAttribute("userna", userN);	
-			url="/WelcomPage.jsp";
+			
+			/*if(myDBC.isAdmin)
+				url="/WelcomAdmin.jsp";
+			
+			else*/
+				url="/WelcomPage.jsp";
 		}
 		
 		else
