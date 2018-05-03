@@ -13,6 +13,7 @@
 			response.sendRedirect("LoginPage.jsp");
 			%>
 			  
+			  <div class="bg">
 	<h1> Welcom in our login page </h1>
 	
 	<form action="LogOut">
@@ -20,6 +21,6 @@
 	<input type="submit" value="Logout">
 	
 	</form>
-	
+	</div>
 </body>
 </html>
