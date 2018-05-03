@@ -6,6 +6,7 @@
 <title>Insert title here</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="WelcomUser.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 
@@ -41,29 +42,29 @@ $(document).ready(function(){
 		
 	<form action="LogOut">
 	
-	<input type="submit" value="Logout">
+	<input type="submit" value="Logout" class="logout">
 	</form>
 	
   </div>
 </div>
-  
 <div id="divHome" class="bg"> 	
 	
 <div style="padding-left:16px">
-    <form action="/action_page.php">
-      <input type="text" placeholder="Search.." name="search">
-      <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
+ <form class="search" action="SerachServlet">
+  <input type="text" placeholder="Search.." name="search">
+  <button type="submit"><i class="fa fa-search"></i> </button>
+</form>
  
 </div>
 	
 	
 	</div>
 	
-	<div id="mypar">
+	<div id="mypar" style="display:none">
 	   	
 	   	Hi salah 
 	   	
 	  </div>
+	   
 </body>
 </html>
