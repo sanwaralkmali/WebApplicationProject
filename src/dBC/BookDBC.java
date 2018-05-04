@@ -1,37 +1,38 @@
+package dBC;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class MyDBC {
-	
+public class BookDBC {
+
 	String url = "jdbc:mysql://localhost:3306/ mylibrary";
 	String userN = "root";
 	String passW = "yqfhg.lhk2014";
 	public String s = "";
 	
-public boolean chickLogin(String username , String password) {
+public void chickLogin(String username) {
 		
-	String qStatement = "select * From users Where username=? and password=?";
+	String qStatement = "select * From users Where username=?";
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection(url , userN , passW);
 			PreparedStatement st = con.prepareStatement(qStatement);
 			st.setString(1, username);
-			st.setString(2, password);
+			
 
 			ResultSet rs =st.executeQuery();
 			
-			if(rs.next()) {
+			while(rs.next()) {
 				try {
-					s = rs.getString(4);
+					s = rs.getString(2);
 					System.out.println(s);
 				}catch(Exception e){
 					
 				}
 				
 							
-				return true;
 				
 			}
 			
@@ -47,19 +48,9 @@ public boolean chickLogin(String username , String password) {
 			e.printStackTrace();
 		}		
 		
-		return false; 
 		
 	}
 
 
-public boolean isAdmin(String s) {
-	try {
-	if(s.equals("y"))
-		return true;
-	
-	}catch(Exception e) {
-		
-	}
-		return false;
-}	
+
 }

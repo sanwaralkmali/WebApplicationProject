@@ -50,7 +50,7 @@ $(document).ready(function(){
 <div id="divHome" class="bg"> 	
 	
 <div style="padding-left:16px">
- <form class="search" action="SerachServlet">
+ <form class="search" action="ReusltOFSearch.jsp" method="get">
   <input type="text" placeholder="Search.." name="search">
   <button type="submit"><i class="fa fa-search"></i> </button>
 </form>
