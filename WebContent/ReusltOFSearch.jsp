@@ -11,18 +11,33 @@
 	<%@ page import ="dBC.*" %>
 	<%@ page import ="javax.swing.ImageIcon
 	" %>
+	
 <% String searchR = request.getParameter("search");
 	BookDBC bookDBc = new BookDBC();
-	bookDBc.chickLogin(searchR);
-	ImageIcon img1 = new ImageIcon("/pic/"+ searchR+".jpg");
-	String s = "pic/salah.jpg";
+	bookDBc.doSearch(searchR);
+	String strd = bookDBc.str; 
+	
+	//int l = bookDBc.s.length;
+	String my = bookDBc.s[1];
+	String bookName = bookDBc.s[2];
+	String author = bookDBc.s[5];
+	String imgUrl = bookDBc.s[5];
+	
+	
 	%>
-
-	<h1> You entered : <%= bookDBc.s%></h1>
-	<img alt="SAlah" src="<%= s%>" id='image'>
-<script type="text/javascript">
-   // document.getElementById('image').src = "salah.jpg";
-</script>
+<%= strd %>
+	
+	<div> 
+	<img alt="Book" src="<%=imgUrl %>">
+	<h1> <%= "Book id is : " + my %></h1>
+	<h1> <%= "Book name is : " + bookName %></h1>
+	<h1> <%= "Book id is : " + author %></h1>
+	
+	</div>
+	
+	
+	
+<h1>  </h1>
 
 
 </body>

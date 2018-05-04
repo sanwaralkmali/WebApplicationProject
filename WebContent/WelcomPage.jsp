@@ -34,7 +34,7 @@ $(document).ready(function(){
 			%>
 		-->	  
   <div class="topnav">
-  <img class="aydinLogo" src="pic\istanbul-aydin-universitesi.jpg">
+  <img class="aydinLogo" src="pic/istanbul-aydin-universitesi.jpg">
   <a id="mhome" class="active" href="#home">Home Page</a>
   <a id="aboutUs" href="#about">About us</a>
   <a href="#contact">Contact</a>
