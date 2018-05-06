@@ -5,6 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Result</title>
+<link rel="stylesheet" type="text/css" href="Search.css">
+
+
 </head>
 <body>
 
@@ -15,57 +18,69 @@
 	<%@ page import ="java.sql.ResultSet"%>
 <% 
 	String search = request.getParameter("search");
-	String url = "jdbc:mysql://localhost:3306/ library";
-	String userN = "root";
-	String passW = "yqfhg.lhk2014";
 	
-
-
-	
-	String qStatement = "select * From books Where book_id=? or book_name=? or author=?";
-	
-	try {
-		Class.forName("com.mysql.jdbc.Driver");
-		Connection con = DriverManager.getConnection(url , userN , passW);
-		PreparedStatement st = con.prepareStatement(qStatement);
-		st.setString(1, search);
-		st.setString(2, search);
-		st.setString(3, search);
 		
-
-			
-		ResultSet rs =st.executeQuery();
+		BookDBC b = new BookDBC(search);
 		
-		while(rs.next()){
+		
+		
+		while(b.rs.next()){
 			
 
 	
 	%>
-	<h1> id = <%= rs.getString(1) %></h1>
-	<h1> bookName = <%= rs.getString(2) %></h1>
-	<h1> author = <%= rs.getString(3) %></h1>
-	<h1> id = <%= rs.getString(1) %></h1>
+	<div class="book">
+		<img class="bookimg" alt="" src="<%="pic/"+b.rs.getString(2).toLowerCase()+".jpg"%>">
 	
-	<img alt="" src="<%="pic/"+rs.getString(2)+".jpg"%>">
-	
-	<% }
+	<h1> <%= b.rs.getString(2) %></h1>
+	<p class="title">By <%= b.rs.getString(3) %></p>
+	 
+		<%
+		String s;
+		String color;
+		if(b.rs.getString(4).equals("Y")){
+				s="Avaliable";
+				color = "green";
 		
-		 rs.close();
-		    st.close();
-		    con.close();
+		}
 		
-	}catch(Exception e){
-		
-	} %>
-	<div> 
-	
-	
+		else
+		{
+			s="Not Avalaible";
+			color = "red";			
+		}
+				%>
+				<form action="BorrowServlet" method="get">
+				<button class="ava" style="background-color: <%= color%>">
+				</form>
+			<p>  <%= s %> </p>	
+			
+			
+			</div>
 	</div>
 	
 	
 	
-<h1>  </h1>
+	<%  }
+		
+		
+		
+		b.rs.close();
+		    b.st.close();
+		    b.con.close();
+		
+	 %>
+	
+	
+	
+	<button onclick="window.location.href='WelcomPage.jsp'">Back</button>
+	
+	
+	
+	
+	
 
 
 </body>
+
 </html>

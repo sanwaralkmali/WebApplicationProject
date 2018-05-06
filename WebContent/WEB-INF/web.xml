@@ -39,4 +39,14 @@
     <servlet-name>SearchServlet</servlet-name>
     <url-pattern>/SearchServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BorrowServlet</display-name>
+    <servlet-name>BorrowServlet</servlet-name>
+    <servlet-class>BorrowServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BorrowServlet</servlet-name>
+    <url-pattern>/BorrowServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
