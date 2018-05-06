@@ -39,6 +39,9 @@ public class BookDBC {
                
                for(int i = 1; i<= numberOfColumns; i++){
             	  s[i]= (String) rs.getString(i);
+            	  
+            	  
+            	 
               }
 				
 			

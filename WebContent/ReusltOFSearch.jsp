@@ -9,29 +9,56 @@
 <body>
 
 	<%@ page import ="dBC.*" %>
-	<%@ page import ="javax.swing.ImageIcon
-	" %>
+	<%@ page import ="java.sql.Connection"%>
+	<%@ page import ="java.sql.DriverManager"%>
+	<%@ page import ="java.sql.PreparedStatement"%>
+	<%@ page import ="java.sql.ResultSet"%>
+<% 
+	String search = request.getParameter("search");
+	String url = "jdbc:mysql://localhost:3306/ library";
+	String userN = "root";
+	String passW = "yqfhg.lhk2014";
 	
-<% String searchR = request.getParameter("search");
-	BookDBC bookDBc = new BookDBC();
-	bookDBc.doSearch(searchR);
-	String strd = bookDBc.str; 
+
+
 	
-	//int l = bookDBc.s.length;
-	String my = bookDBc.s[1];
-	String bookName = bookDBc.s[2];
-	String author = bookDBc.s[5];
-	String imgUrl = bookDBc.s[5];
+	String qStatement = "select * From books Where book_id=? or book_name=? or author=?";
 	
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection con = DriverManager.getConnection(url , userN , passW);
+		PreparedStatement st = con.prepareStatement(qStatement);
+		st.setString(1, search);
+		st.setString(2, search);
+		st.setString(3, search);
+		
+
+			
+		ResultSet rs =st.executeQuery();
+		
+		while(rs.next()){
+			
+
 	
 	%>
-<%= strd %>
+	<h1> id = <%= rs.getString(1) %></h1>
+	<h1> bookName = <%= rs.getString(2) %></h1>
+	<h1> author = <%= rs.getString(3) %></h1>
+	<h1> id = <%= rs.getString(1) %></h1>
 	
+	<img alt="" src="<%="pic/"+rs.getString(2)+".jpg"%>">
+	
+	<% }
+		
+		 rs.close();
+		    st.close();
+		    con.close();
+		
+	}catch(Exception e){
+		
+	} %>
 	<div> 
-	<img alt="Book" src="<%=imgUrl %>">
-	<h1> <%= "Book id is : " + my %></h1>
-	<h1> <%= "Book name is : " + bookName %></h1>
-	<h1> <%= "Book id is : " + author %></h1>
+	
 	
 	</div>
 	
