@@ -49,4 +49,24 @@
     <servlet-name>BorrowServlet</servlet-name>
     <url-pattern>/BorrowServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddNewBook</display-name>
+    <servlet-name>AddNewBook</servlet-name>
+    <servlet-class>AddNewBook</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddNewBook</servlet-name>
+    <url-pattern>/AddNewBook</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteBook</display-name>
+    <servlet-name>DeleteBook</servlet-name>
+    <servlet-class>DeleteBook</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteBook</servlet-name>
+    <url-pattern>/DeleteBook</url-pattern>
+  </servlet-mapping>
 </web-app>

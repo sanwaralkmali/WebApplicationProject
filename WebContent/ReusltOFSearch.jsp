@@ -30,7 +30,7 @@
 	
 	%>
 	<div class="book">
-		<img class="bookimg" alt="" src="<%="pic/"+b.rs.getString(2).toLowerCase()+".jpg"%>">
+		<img class="bookimg" alt="" src="<%=b.rs.getString(5)%>">
 	
 	<h1 id="bookNAme"> <%= b.rs.getString(2) %></h1>
 	<p class="title" id="author">By <%= b.rs.getString(3) %></p>
@@ -52,31 +52,11 @@
 				%>
 				
 			
-			<button onclick="myfunction()">
+			<button>
 			<%= s %>
-			<% String bName = b.rs.getString(3);
-			%>
-	<script type="text/javascript">
-	
-	function myfunction(){
-		var div =document.getElementsByClassName("book");
-		var div2 =document.getElementById("bookName");
-		for(var i=0;i<div.length;i++){
-			var s = div[i].children.text;
-						console.log(s);
-		}
-			
-
-		}
-
-	
-	</script>
 	 
 			</button>	
-			
-			
-				
-			
+	
 			
 			</div>
 	
