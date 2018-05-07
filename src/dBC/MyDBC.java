@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 
 public class MyDBC {
 	
-	String url = "jdbc:mysql://localhost:3306/ mylibrary";
+	String url = "jdbc:mysql://localhost:3306/library";
 	String userN = "root";
 	String passW = "yqfhg.lhk2014";
 	public String s = "";

@@ -15,17 +15,16 @@ public class BookDBC {
 	public ResultSet rs;
 	public Connection con;
 	public PreparedStatement st;
-	public BookDBC(String search) {
-	String qStatement = "select * From books Where book_id=? or book_name=? or author=?";
+	
+	
+	public BookDBC(String qStatement) {
 	
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
 		 con = DriverManager.getConnection(url , userN , passW);
-		st = con.prepareStatement(qStatement);
-		st.setString(1, search);
-		st.setString(2, search);
-		st.setString(3, search);
+		st = con.prepareStatement(qStatement);	
 		 rs =st.executeQuery();
+		
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

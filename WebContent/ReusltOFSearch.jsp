@@ -7,7 +7,7 @@
 <title>Result</title>
 <link rel="stylesheet" type="text/css" href="Search.css">
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -20,7 +20,7 @@
 	String search = request.getParameter("search");
 	
 		
-		BookDBC b = new BookDBC(search);
+		BookDBC b = new BookDBC( "select * From books Where book_id='"+search+"'or book_name='"+search+"'or author='"+search+"'");
 		
 		
 		
@@ -32,8 +32,8 @@
 	<div class="book">
 		<img class="bookimg" alt="" src="<%="pic/"+b.rs.getString(2).toLowerCase()+".jpg"%>">
 	
-	<h1> <%= b.rs.getString(2) %></h1>
-	<p class="title">By <%= b.rs.getString(3) %></p>
+	<h1 id="bookNAme"> <%= b.rs.getString(2) %></h1>
+	<p class="title" id="author">By <%= b.rs.getString(3) %></p>
 	 
 		<%
 		String s;
@@ -50,16 +50,35 @@
 			color = "red";			
 		}
 				%>
-				<form action="BorrowServlet" method="get">
-				<button class="ava" style="background-color: <%= color%>">
-				</form>
-			<p>  <%= s %> </p>	
+				
+			
+			<button onclick="myfunction()">
+			<%= s %>
+			<% String bName = b.rs.getString(3);
+			%>
+	<script type="text/javascript">
+	
+	function myfunction(){
+		var div =document.getElementsByClassName("book");
+		var div2 =document.getElementById("bookName");
+		for(var i=0;i<div.length;i++){
+			var s = div[i].children.text;
+						console.log(s);
+		}
+			
+
+		}
+
+	
+	</script>
+	 
+			</button>	
+			
+			
+				
 			
 			
 			</div>
-	</div>
-	
-	
 	
 	<%  }
 		
@@ -78,9 +97,7 @@
 	
 	
 	
-	
 
-
-</body>
+	</body>
 
 </html>
