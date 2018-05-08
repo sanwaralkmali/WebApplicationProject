@@ -4,7 +4,7 @@ body, html {
 }
 
 .bg {
-    background-image: url("pic/libraryBackGround.jpg");
+    background-image: url("..//pic/libraryBackGround.jpg");
     height: 100%; 
 	opacity : .5;
     background-position: center;
