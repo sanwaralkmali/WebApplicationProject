@@ -20,7 +20,7 @@ public class LoginServlet extends HttpServlet {
 
 		String userN = request.getParameter("userName");
 		String passW = request.getParameter("pass");
-		 String url="";
+		 String url="/LoginPage.jsp";
 		 
 		String qStatement = "select * From logintable Where user_name='"+userN+"' and password='"+passW+"'";
 		BookDBC book= new BookDBC(qStatement);
@@ -28,20 +28,27 @@ public class LoginServlet extends HttpServlet {
 		
 	    try {
 			if(book.rs.next()) {
-				if(book.rs.getString(4).equals("Y"))
+				if(book.rs.getString(4).equals("Y")) 
 					url="/WelcomAdmin.jsp";
-				
-				else
-					url="/WelcomPage.jsp";
 					
+				
+				
+				else {
+					url="/WelcomPage.jsp";
+					request.setAttribute("pass", passW);
+				}
+					
+				  
 			}
+		
+			else	
+				request.setAttribute("login", "wrong login");
+
 			
 				
-		} catch (Exception e) {
-			url="/LoginPage.jsp";
-					
-					e.printStackTrace();
-		}
+		} catch(SQLException e) {
+			 
+					}
 	    
 	    RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
 	    rd.forward(request, response);

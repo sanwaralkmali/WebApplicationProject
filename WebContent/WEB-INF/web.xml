@@ -69,4 +69,24 @@
     <servlet-name>DeleteBook</servlet-name>
     <url-pattern>/DeleteBook</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ChangePassServlet</display-name>
+    <servlet-name>ChangePassServlet</servlet-name>
+    <servlet-class>ChangePassServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChangePassServlet</servlet-name>
+    <url-pattern>/ChangePassServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddNewUser</display-name>
+    <servlet-name>AddNewUser</servlet-name>
+    <servlet-class>AddNewUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddNewUser</servlet-name>
+    <url-pattern>/AddNewUser</url-pattern>
+  </servlet-mapping>
 </web-app>

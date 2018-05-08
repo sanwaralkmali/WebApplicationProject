@@ -4,13 +4,9 @@ body, html {
 }
 
 .bg {
-    /* The image used */
     background-image: url("pic/libraryBackGround.jpg");
-
-    /* Full height */
     height: 100%; 
 	opacity : .5;
-    /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -103,3 +99,15 @@ form.search::after {
   .topnav input[type=text] {
     border: 1px solid #ccc;  
   }
+  
+body
+{
+  background:url("http://myminispot.com/images/prox.png");
+  background-size:cover;
+}
+
+#Chpass {
+	
+	backgrount-color: red;
+	
+}

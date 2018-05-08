@@ -14,6 +14,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class DeleteBook
@@ -39,26 +40,25 @@ public class DeleteBook extends HttpServlet {
               stmt.setString(1, userID);
               
               int i = stmt.executeUpdate();
-              if(i>0) {
-                request.setAttribute("mess", "Delete Successfully");
+              if(i>0)
+            	  request.setAttribute("DeletingBook", "Deleting Success");
+            	  
                 
-              }else {
-            	  request.setAttribute("mess", "Delete UnSuccessfully");
-              }
+              else 
+            	  request.setAttribute("DeletingBook", "Deleting Faild");
               
               
-              
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/WelcomAdmin.jsp");
-      	    rd.forward(request, response);
+           
       	    
               stmt.close();
               con.close();
         }
         catch(Exception e)
         {
-          out.println(e);       
-        }
-		
+        	 request.setAttribute("DeletingBook", "Deleting Faild");
+        	 }
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/WelcomAdmin.jsp");
+  	    rd.forward(request, response);
        
         
 	

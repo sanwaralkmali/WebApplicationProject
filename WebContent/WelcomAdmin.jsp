@@ -8,106 +8,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="WelcomUser.css">
+<link rel="stylesheet" type="text/css" href="WelcomAdmin.css">
 <link rel="stylesheet" type="text/css" href="LoginStyle.css">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 
-<style>
 
-body, html {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-}
-
-.container {
-  width: 100%;
-  height: 100%;
-}
-
-.leftpane {
-    width: 30%;
-    height: 100%;
-    float: left;
-    background-color: blue;
-    border-collapse: collapse;
-    opacity:.4;
-}
-
-.middlepane {
-    width: 70%;
-    height: 100%;
-    float: left;
-    border-collapse: collapse;
-}
-
-
-
-.toppane {
-  width: 100%;
-  height: 100px;
-  border-collapse: collapse;
-  background-color: #4da6ff;
-}
-
-.list{
-padding:25%;
-}
-.list li a{
-
-margin-top:10%;
- display: block;
-  color: black; 
-  text-align: center;
-}
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-
-.addBook {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-}
-input[type=submit]:hover {
-    background-color: #45a049;
-}
-
-input[type=text], select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.addBookButton input[type=submit] {
-    width: 30%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-</style>
 <%@ page import ="dBC.*" %>
 <%@ page import ="java.sql.Connection"%>
 <%@ page import ="java.sql.DriverManager"%>
@@ -175,7 +83,7 @@ $(document).ready(function(){
 	    var label4 = $('<label/>').attr('for' , 'image').text("image Path");
 	    var inputId4 = $('<input/>').addClass('input').attr('name' , "imagePath").attr('type' , 'text');
 
-	  	var input = $('<input/>').attr('type' , 'submit').attr('Value' , "Upload Img").addClass('addBookButton');
+	  	var input = $('<input/>').attr('type' , 'submit').attr('Value' , "Add Book").addClass('addBookButton').attr('style','width:100%;');
 	    
 	    
 	    form.append(label);
@@ -187,6 +95,35 @@ $(document).ready(function(){
 	    form.append(inputId3);
 	    form.append(label4);
 	    form.append(inputId4);
+	    form.append(input);
+	    div.append(form);
+	    $('.middlepane').append(div);
+    	
+        });
+    
+    $("#addUser").click(function(){
+    	$( ".middlepane" ).empty();
+		
+    	var div=$('<div/>').addClass('addBook');
+    	var form = $('<form/>').attr('action' , 'AddNewUser').attr('method' , 'post');
+    	var label = $('<label/>').attr('for' , 'User_ID').text("User ID");
+	    var inputId = $('<input/>').addClass('input').attr('name' , "User_ID").attr('type' , 'text').attr("required", "true");
+	    var label2 = $('<label/>').attr('for' , 'Book_Name').text("User Name");
+	    var inputId2 = $('<input/>').addClass('input').attr('name' , "User_Name").attr('type' , 'text').attr("required", "true");
+	    var label3 = $('<label/>').attr('for' , 'Author').text("User SurName");
+	    var inputId3 = $('<input/>').addClass('input').attr('name' , "SurName").attr('type' , 'text').attr("required", "true");
+	 
+
+	  	var input = $('<input/>').attr('type' , 'submit').attr('Value' , "Add User").addClass('addBookButton').attr('style','width:100%;');
+	    
+	    
+	    form.append(label);
+	    form.append(inputId);
+	    form.append(label2);
+	    form.append(inputId2);
+	    form.append(input); 
+	    form.append(label3);
+	    form.append(inputId3);
 	    form.append(input);
 	    div.append(form);
 	    $('.middlepane').append(div);
@@ -217,15 +154,27 @@ $(document).ready(function(){
 
 </head>
 <body>
-<%	
-	String message =  (String) request.getAttribute("mess");
-	if(message == ("Delete Successfully"))
-	{	
-%>
-<script type="text/javascript"> alter('<%= message%>')</script>
-<%} else if(message == ("Delete UnSuccessfully"))  { %>
-<script type="text/javascript"> alter('<%= message%>')</script>
-<%} %>
+<%String massOfInsertUser = 
+			(String) request.getAttribute("newUserInserting");
+			if(massOfInsertUser == "inserting new user Suesses" || massOfInsertUser =="inserting new user Faild")
+			{
+		%> 
+	<script> alert('<%= massOfInsertUser%>') </script> 
+	<%} %>
+<%String massOfDeleteBook = 
+			(String) request.getAttribute("DeletingBook");
+			if(massOfDeleteBook == "Deleting Success" || massOfDeleteBook =="Deleting Faild")
+			{
+		%> 
+	<script> alert('<%= massOfDeleteBook%>') </script> 
+	<%} %>
+<%String massOfInsertBook = 
+			(String) request.getAttribute("newBookInserting");
+			if(massOfInsertBook == "inserting new Book Suesses" || massOfInsertBook =="inserting new Book Faild")
+			{
+		%> 
+	<script> alert('<%= massOfInsertBook%>') </script> 
+	<%} %>
 
 <div class="container">
              <div class="topnav">

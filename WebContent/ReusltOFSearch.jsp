@@ -11,6 +11,7 @@
 </head>
 <body>
 
+
 	<%@ page import ="dBC.*" %>
 	<%@ page import ="java.sql.Connection"%>
 	<%@ page import ="java.sql.DriverManager"%>
@@ -52,7 +53,7 @@
 				%>
 				
 			
-			<button>
+			<button style="width:100%; height:100%">
 			<%= s %>
 	 
 			</button>	
@@ -70,9 +71,10 @@
 		
 	 %>
 	
+	<div> <button onclick="window.location.href='WelcomPage.jsp'" style="width:30%;position: absolute;
+    bottom: 0;margin:2%;">Back</button> </div>
 	
 	
-	<button onclick="window.location.href='WelcomPage.jsp'">Back</button>
 	
 	
 	

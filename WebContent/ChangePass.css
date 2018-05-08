@@ -1,0 +1,21 @@
+
+#ChPass{
+	margin: 10%;
+	width: 350px;
+	height : 150px;
+	box-shadow: 2px 2px;
+	border-radius:15px;
+  -webkit-border-radius:15px;
+  -moz-border-radius:15px;
+}
+
+.changepass{
+	   width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+}
