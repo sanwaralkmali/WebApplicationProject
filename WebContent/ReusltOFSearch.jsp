@@ -10,7 +10,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-
+ <%	
+	
+	if(session.getAttribute("userna")==null)
+		response.sendRedirect("LoginPage.jsp");
+			%>
+		  
 
 	<%@ page import ="dBC.*" %>
 	<%@ page import ="java.sql.Connection"%>

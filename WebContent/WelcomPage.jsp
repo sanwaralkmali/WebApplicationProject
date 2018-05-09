@@ -38,17 +38,11 @@ $(document).ready(function(){
 </head>
 <body>
 
-	<!-- <%	
+	 <%	
 	
-	//if(session.getAttribute("userna")==null)
-		//	response.sendRedirect("LoginPage.jsp");
+	if(session.getAttribute("userna")!= "loginUser")
+		response.sendRedirect("LoginPage.jsp");
 			%>
-		-->	  
-		<% String pass = 
-				(String) request.getAttribute("pass");
-			if(pass == null)
-			pass = "";
-		%>
 		
 		<%String passwordChange = 
 			(String) request.getAttribute("ChangePassword");
@@ -68,7 +62,7 @@ $(document).ready(function(){
    <a id="ChangePass" href="#contact">Change PassWord</a>
   <div class="search-container">
 		
-	<form action="LogOut">
+	<form action="LogOut" method="get">
 	
 	<input type="submit" value="Logout" class="logout">
 	</form>
@@ -90,7 +84,7 @@ $(document).ready(function(){
 	
 	<div id="mypar" style="display:none">
 	   	
-	   	Hi salah 
+	   Write somth
 	   	
 	  </div>
 	  
@@ -99,12 +93,20 @@ $(document).ready(function(){
 	  <form action="ChangePassServlet" method="post"> 
 	  
 	  <label for="current password"> Current Password </label>
-	  <input type="password" name="current_password" type="text"  class="changepass"></p>
+	  <input type="password" name="current_password" type="text"  class="changepass" required>
  		<label for="new password"> New password</label>
- 		<input type="password" name="new_password" class="changepass" type="text">
+ 		<input type="password" name="new_password" class="changepass" type="text" required>
   
   		<label for="new password">Confirm password </label>
- 		 <input type="password" name="confirm_password" class="changepass" type="text">
+ 		 <input type="password" name="confirm_password" class="changepass" type="text" required>
+		  
+		<% 
+		
+		String pass = 
+				(String) request.getAttribute("pass");
+			if(pass == null)
+			pass = "";
+		%>
 		
 		        <input type="hidden" name="pass" value="<%=pass%>" />
 

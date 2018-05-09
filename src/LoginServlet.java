@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,17 +29,24 @@ public class LoginServlet extends HttpServlet {
 		
 	    try {
 			if(book.rs.next()) {
-				if(book.rs.getString(4).equals("Y")) 
+				if(book.rs.getString(4).equals("Y")) {
 					url="/WelcomAdmin.jsp";
-					
-				
+					 HttpSession session=request.getSession();  
+				        session.setAttribute("userna","loginAdmin"); 	
+				}
 				
 				else {
 					url="/WelcomPage.jsp";
+					
+					
+					
 					request.setAttribute("pass", passW);
+					 HttpSession session=request.getSession();  
+				        session.setAttribute("userna","loginUser"); 
 				}
 					
 				  
+				 
 			}
 		
 			else	

@@ -34,6 +34,7 @@ public class ChangePassServlet extends HttpServlet {
 			
 			if( newPass.equals(ConfPass)) { 
 				request.setAttribute("ChangePassword", "PassWord Changed");
+				request.setAttribute("pass", newPass);
 		String url = "jdbc:mysql://localhost:3306/ library";
 		String userN = "root";
 		String passW = "yqfhg.lhk2014";

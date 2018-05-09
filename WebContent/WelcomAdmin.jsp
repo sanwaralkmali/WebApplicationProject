@@ -154,6 +154,13 @@ $(document).ready(function(){
 
 </head>
 <body>
+ <%	
+	
+	if(session.getAttribute("userna")!= "loginAdmin")
+		response.sendRedirect("LoginPage.jsp");
+			%>
+		  
+		  
 <%String massOfInsertUser = 
 			(String) request.getAttribute("newUserInserting");
 			if(massOfInsertUser == "inserting new user Suesses" || massOfInsertUser =="inserting new user Faild")
@@ -168,6 +175,7 @@ $(document).ready(function(){
 		%> 
 	<script> alert('<%= massOfDeleteBook%>') </script> 
 	<%} %>
+	
 <%String massOfInsertBook = 
 			(String) request.getAttribute("newBookInserting");
 			if(massOfInsertBook == "inserting new Book Suesses" || massOfInsertBook =="inserting new Book Faild")
@@ -181,7 +189,7 @@ $(document).ready(function(){
   <img class="aydinLogo" src="pic/istanbul-aydin-universitesi.jpg">
   
 		
-	<form action="LogOut">
+	<form action="LogOut" method='get'>
 	
 	<input type="submit" value="Logout" class="logout">
 	</form>
